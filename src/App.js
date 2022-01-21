@@ -49,12 +49,12 @@ function App() {
     // Access the decentralized web!
   }
   const loadBlockchaindata = async () => {
-    // const web3 = window.ethereum;
+    // const web3 = window.web3;
     // const networkData = await Hello.networks[4];
     // if (networkData) {
-    //   console.log(networkData);
-    //   const contract = await new web3.eth.Contract(Hello.abi, networkData.address);
-    //   // console.log(contract);
+    //   //   console.log(networkData);
+    //   // const contract = window.web3.eth.Contract(Hello.abi, networkData.address);
+    //   //   // console.log(contract);
     // }
   }
   function connect() {
