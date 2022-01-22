@@ -12,6 +12,11 @@ function App() {
     loadBlockchaindata();
   }, [account])
   const [connected, setConnected] = useState(false);
+  const [toSubmit, setToSubmit] = useState({});
+  const [email, setEmail] = useState();
+  const [twitter, setTwitter] = useState();
+  const [discord, setDiscord] = useState();
+
   const load = async () => {
     const provider = await detectEthereumProvider();
 
@@ -74,13 +79,48 @@ function App() {
         }
       });
   }
+  const [err, setErr] = useState("")
+  const handleSubmit = () => {
+    if (connected && email && twitter && discord) {
+      setErr("")
+      let toSend = {}
+      toSend["email"] = email;
+      toSend["twitter"] = twitter;
+      toSend["discord"] = discord;
+      console.log(toSend);
+    }
+    else
+      setErr("Please fill all the fields and connect your metamask account using the connect button above!!!")
+  }
   return (
     <>
-      <h1>Hello:  {connected ? account : <Button variant="primary" onClick={connect}>Connect</Button>}
-      </h1>
-      {/* <hr />
-      <h3>From smart contract: { }</h3>
-      <hr /> */}
+      <h3>Hello:  {connected ? account : <Button variant="primary" onClick={connect}>Connect</Button>}
+      </h3>
+      <hr />
+      <h3>Form:</h3>
+      <div style={{
+        display: "flex",
+        alignItems: "center"
+      }}>
+        <span>Email: </span>
+        <input type="email" placeholder='Email' required onChange={(e) => {
+          setEmail(e.target.value);
+        }} />
+        <br />
+        <span>Twitter: </span>
+        <input type="text" placeholder='twitter link' required onChange={(e) => {
+          setTwitter(e.target.value);
+        }} />
+        <br />
+        <span>Discord: </span>
+        <input type="text" placeholder='discord handle' required onChange={(e) => {
+          setDiscord(e.target.value);
+        }} />
+        <Button variant='success' onClick={handleSubmit}>Submit</Button>
+      </div>
+      <br />
+      <h5 style={{ color: 'red' }}>{err}</h5>
+      <hr />
     </>)
 }
 
