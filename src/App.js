@@ -9,10 +9,8 @@ function App() {
   const [account, setAccount] = useState();
   useEffect(() => {
     load();
-    loadBlockchaindata();
   }, [account])
   const [connected, setConnected] = useState(false);
-  const [toSubmit, setToSubmit] = useState({});
   const [email, setEmail] = useState();
   const [twitter, setTwitter] = useState();
   const [discord, setDiscord] = useState();
@@ -52,15 +50,6 @@ function App() {
       console.log('Do you have multiple wallets installed?');
     }
     // Access the decentralized web!
-  }
-  const loadBlockchaindata = async () => {
-    // const web3 = window.web3;
-    // const networkData = await Hello.networks[4];
-    // if (networkData) {
-    //   //   console.log(networkData);
-    //   // const contract = window.web3.eth.Contract(Hello.abi, networkData.address);
-    //   //   // console.log(contract);
-    // }
   }
   function connect() {
     window.ethereum
